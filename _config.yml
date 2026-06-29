@@ -1,37 +1,49 @@
 title: "Hindiba"
-description: "Modern blog – Edebiyat, Şiir ve Günlük yazılar"
+description: "Edebiyat, şiir ve günlük yazılar – modern, sakin bir blog."
 url: "https://cryptr0nix.github.io"
 baseurl: ""
-
-# Varsayılan dil ve zaman dilimi
 lang: "tr"
 timezone: "Europe/Istanbul"
 
-# Koleksiyonlar (sadece posts)
+# Yorum sistemi (giscus) ayarları
+comments:
+  provider: giscus
+  giscus:
+    repo: cryptr0nix/cryptr0nix.github.io
+    repo_id: "R_kgDOH..."
+    category: "General"
+    category_id: "DIC_kwDOH..."
+    mapping: "pathname"
+    strict: 0
+    reactions_enabled: "1"
+    emit_metadata: 0
+    theme: "preferred_color_scheme"
+    lang: "tr"
+
 collections:
   posts:
     output: true
     permalink: /:categories/:title/
 
-# GitHub Pages'in desteklediği eklentiler
 plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-sitemap
 
-# Sayfalama (jekyll-paginate v1)
 paginate: 6
 paginate_path: "/sayfa/:num/"
 
-# Markdown işleyici
 markdown: kramdown
 kramdown:
   input: GFM
+  syntax_highlighter: rouge
 
-# Varsayılan front matter ayarları
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+      comments: true
+      cover: ""  # isteğe bağlı kapak resmi URL'si
