@@ -1,0 +1,37 @@
+title: "Hindiba"
+description: "Modern blog – Edebiyat, Şiir ve Günlük yazılar"
+url: "https://cryptr0nix.github.io"
+baseurl: ""
+
+# Varsayılan dil ve zaman dilimi
+lang: "tr"
+timezone: "Europe/Istanbul"
+
+# Koleksiyonlar (sadece posts)
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
+
+# GitHub Pages'in desteklediği eklentiler
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-feed
+
+# Sayfalama (jekyll-paginate v1)
+paginate: 6
+paginate_path: "/sayfa/:num/"
+
+# Markdown işleyici
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Varsayılan front matter ayarları
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
