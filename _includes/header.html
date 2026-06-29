@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+    <nav>
+      <ul class="nav-links">
+        {% for cat in site.data.categories %}
+          <li><a href="/{{ cat.slug }}/">{{ cat.icon }} {{ cat.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="controls">
+      <button id="theme-toggle" aria-label="Tema değiştir">
+        <span class="icon-light">☀️</span>
+        <span class="icon-dark">🌙</span>
+      </button>
+      <div class="zoom-controls">
+        <button id="zoom-out" aria-label="Küçült">A⁻</button>
+        <button id="zoom-reset" aria-label="Sıfırla">A</button>
+        <button id="zoom-in" aria-label="Büyüt">A⁺</button>
+      </div>
+    </div>
+  </div>
+</header>
