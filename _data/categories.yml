@@ -1,0 +1,9 @@
+- name: Edebiyat
+  slug: edebiyat
+  icon: 📚
+- name: Şiir
+  slug: siir
+  icon: 🎭
+- name: Günlük
+  slug: gunluk
+  icon: 📓
