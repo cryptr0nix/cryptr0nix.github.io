@@ -1,0 +1,34 @@
+---
+layout: default
+title: "Hindiba – Ana Sayfa"
+---
+<div class="post-list">
+  {% for post in paginator.posts %}
+    <article class="post-card animate-on-scroll">
+      {% if post.cover %}
+        <div class="card-cover" style="background-image: url('{{ post.cover }}');"></div>
+      {% endif %}
+      <span class="category-icon">
+        {% assign cat = site.data.categories | where: "slug", post.category | first %}
+        {{ cat.icon }}
+      </span>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <div class="post-meta">
+        <span class="category"><a href="/{{ post.category }}/">{{ cat.name }}</a></span>
+        <time>{{ post.date | date: "%d %B %Y" }}</time>
+        <span class="reading-time">{% include reading-time.html content=post.content %}</span>
+      </div>
+      <p class="excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+    </article>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}">&laquo; Yeni Yazılar</a>
+  {% endif %}
+  <span>Sayfa {{ paginator.page }} / {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}">Eski Yazılar &raquo;</a>
+  {% endif %}
+</div>
