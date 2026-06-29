@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include progress-bar.html %}
+  {% include header.html %}
+  <main class="container fade-in">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
