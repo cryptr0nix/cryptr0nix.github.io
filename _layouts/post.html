@@ -1,0 +1,51 @@
+---
+layout: default
+---
+<article class="post-card post-full" itemscope itemtype="http://schema.org/BlogPosting">
+  {% if page.cover %}
+    <div class="post-cover" style="background-image: url('{{ page.cover }}');"></div>
+  {% endif %}
+  
+  {% assign cat = site.data.categories | where: "slug", page.category | first %}
+  <div class="post-meta">
+    <span class="category-icon">{{ cat.icon }}</span>
+    <span class="category"><a href="/{{ page.category }}/">{{ cat.name }}</a></span>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %B %Y" }}</time>
+    <span class="reading-time">{% include reading-time.html content=content %}</span>
+  </div>
+
+  <h1 itemprop="headline">{{ page.title }}</h1>
+
+  <div class="post-body" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <!-- Tahmini bitiş zamanı -->
+  <p class="estimated-finish" style="font-size:0.85rem; color: var(--text-secondary); margin-top: 1em;">
+    ⏱️ Okumaya başladıysan yaklaşık <span id="finish-time"></span>'te bitirirsin.
+  </p>
+
+  <div class="share-buttons">
+    <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title | uri_escape }}" target="_blank" rel="noopener">🐦 Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" rel="noopener">📘 Facebook</a>
+    <button class="copy-link" data-url="{{ site.url }}{{ page.url }}">🔗 Linki Kopyala</button>
+  </div>
+
+  {% if page.comments %}
+    {% include comments.html %}
+  {% endif %}
+</article>
+
+<script>
+  // Tahmini bitiş zamanı
+  (function() {
+    const wpm = 200; // ortalama okuma hızı
+    const text = document.querySelector('.post-body').innerText;
+    const wordCount = text.trim().split(/\s+/).length;
+    const minutes = Math.ceil(wordCount / wpm);
+    const now = new Date();
+    const finish = new Date(now.getTime() + minutes*60000);
+    document.getElementById('finish-time').textContent = 
+      finish.toLocaleTimeString('tr-TR', {hour: '2-digit', minute:'2-digit'});
+  })();
+</script>
