@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hindiba | Eşref Akbaş — Hatıra Defteri</title>
+  <meta name="description" content="Eşref Akbaş'ın kişisel blogu — Edebiyat, şiir ve günlük yazıları">
+  <meta name="theme-color" content="#007aff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hindiba | Eşref Akbaş">
+  <meta property="og:description" content="Edebiyat, şiir ve günlük yazıları">
+  <meta property="og:locale" content="tr_TR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hindiba | Eşref Akbaş">
+  <meta name="twitter:description" content="Edebiyat, şiir ve günlük yazıları">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+  <div class="mesh-bg" aria-hidden="true"></div>
+  <div id="reading-progress" role="progressbar" aria-label="Okuma ilerlemesi"></div>
+
+  <div class="app-shell">
+    <!-- macOS-style title bar -->
+    <header class="top-bar glass glass-strong glass-chrome" role="banner">
+      <div class="traffic-lights" aria-hidden="true">
+        <span class="red"></span>
+        <span class="yellow"></span>
+        <span class="green"></span>
+      </div>
+      <div class="brand">
+        <h1 class="brand-title"><i class="fas fa-feather-alt"></i> Hindiba</h1>
+        <p class="brand-tagline">Belki de şimdiye kadar ardından söylenebilecek en zarif benzetme "Hindiba" idi…</p>
+      </div>
+      <div class="top-actions">
+        <button type="button" class="glass-btn icon-only" id="themeToggle" aria-label="Temayı değiştir">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <main class="content-column">
+        <div class="search-wrap">
+          <i class="fas fa-search"></i>
+          <input type="search" id="searchInput" class="glass-input"
+                 placeholder="Yazılarda ara…" autocomplete="off" aria-label="Yazılarda ara">
+          <kbd class="search-kbd">/</kbd>
+        </div>
+
+        <div class="toolbar glass glass-subtle">
+          <p class="results-status" id="resultsStatus">Yazılar hazırlanıyor…</p>
+          <div class="reader-controls" aria-label="Okuma ayarları">
+            <button type="button" class="glass-btn icon-only" id="fontDecrease" aria-label="Yazıyı küçült"><i class="fas fa-minus"></i></button>
+            <button type="button" class="glass-btn icon-only" id="fontReset" aria-label="Yazıyı sıfırla"><i class="fas fa-font"></i></button>
+            <button type="button" class="glass-btn icon-only" id="fontIncrease" aria-label="Yazıyı büyüt"><i class="fas fa-plus"></i></button>
+            <button type="button" class="glass-btn icon-only" id="savedFilter" aria-label="Kaydedilenler"><i class="fas fa-heart"></i></button>
+          </div>
+        </div>
+
+        <nav class="category-row" aria-label="Kategoriler">
+          <button type="button" class="filter-chip active" data-category="all"><i class="fas fa-globe"></i> Tümü</button>
+          <button type="button" class="filter-chip" data-category="edebiyat"><i class="fas fa-book"></i> Edebiyat</button>
+          <button type="button" class="filter-chip" data-category="siir"><i class="fas fa-feather-alt"></i> Şiir</button>
+          <button type="button" class="filter-chip" data-category="gunluk"><i class="fas fa-journal-whills"></i> Günlük</button>
+          <button type="button" class="filter-chip" data-category="bir-cumle"><i class="fas fa-quote-left"></i> Bir Cümle</button>
+        </nav>
+
+        <section class="posts-feed" id="postsFeed" aria-live="polite" aria-label="Yazılar">
+          <!-- Skeleton loaded by JS -->
+        </section>
+      </main>
+
+      <aside class="sidebar" aria-label="Kenar çubuğu">
+        <div class="sidebar-panel glass glass-card glass-chrome profile-block">
+          <img src="assets/pp.jpg" alt="Eşref Akbaş" class="profile-avatar" width="96" height="96"
+               loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/96x96/007aff/ffffff?text=EA'">
+          <h2 class="profile-name">Eşref Akbaş</h2>
+          <p class="profile-location"><i class="fas fa-map-marker-alt"></i> Wan</p>
+        </div>
+
+        <div class="sidebar-panel glass glass-card">
+          <h3 class="panel-title"><i class="fas fa-chart-line"></i> İstatistikler</h3>
+          <ul class="stat-list">
+            <li><i class="fas fa-pen-fancy"></i> Toplam Yazı: <strong id="totalPosts">0</strong></li>
+            <li><i class="fas fa-tags"></i> Kategori: <strong>4</strong></li>
+            <li><i class="fas fa-bookmark"></i> Son Okunan: <strong id="lastReadTitle">Yok</strong></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-panel glass glass-card">
+          <h3 class="panel-title"><i class="fas fa-tags"></i> Kategoriler</h3>
+          <ul class="category-list">
+            <li data-category="edebiyat" data-cat-count="edebiyat" data-cat-name="Edebiyat" data-cat-icon="fa-book">
+              <i class="fas fa-book"></i> Edebiyat (0)
+            </li>
+            <li data-category="siir" data-cat-count="siir" data-cat-name="Şiir" data-cat-icon="fa-feather-alt">
+              <i class="fas fa-feather-alt"></i> Şiir (0)
+            </li>
+            <li data-category="gunluk" data-cat-count="gunluk" data-cat-name="Günlük" data-cat-icon="fa-journal-whills">
+              <i class="fas fa-journal-whills"></i> Günlük (0)
+            </li>
+            <li data-category="bir-cumle" data-cat-count="bir-cumle" data-cat-name="Bir Cümle" data-cat-icon="fa-quote-left">
+              <i class="fas fa-quote-left"></i> Bir Cümle (0)
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-panel glass glass-card">
+          <h3 class="panel-title"><i class="fas fa-clock"></i> Son Yazılar</h3>
+          <ul class="recent-list" id="recentPosts">
+            <li><i class="fas fa-spinner fa-spin"></i> Yükleniyor…</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-panel glass glass-card">
+          <h3 class="panel-title"><i class="fas fa-share-alt"></i> Takip Et</h3>
+          <div class="social-row">
+            <a href="https://www.instagram.com/esrefakbs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/esrefakbs" target="_blank" rel="noopener noreferrer" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://open.spotify.com/playlist/5mZ5BOFB8HkMSzEBPiX3gi?si=3421b56087c04a81" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- macOS sheet modal -->
+  <div id="postModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitleBar">
+    <article class="modal-sheet glass glass-strong glass-chrome">
+      <header class="modal-header">
+        <div class="modal-traffic">
+          <button type="button" class="close-btn" id="modalClose" aria-label="Kapat"></button>
+          <span class="min-btn" aria-hidden="true"></span>
+          <span class="max-btn" aria-hidden="true"></span>
+        </div>
+        <div class="modal-title-bar" id="modalTitleBar">Yazı</div>
+        <div style="width:52px"></div>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+    </article>
+  </div>
+
+  <!-- Command palette (⌘K / Ctrl+K) -->
+  <div id="commandPalette" class="command-palette" role="dialog" aria-label="Hızlı arama">
+    <div class="command-panel glass glass-strong">
+      <div class="command-input-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="commandInput" class="command-input" placeholder="Yazı ara veya komut seç…" autocomplete="off">
+        <kbd>esc</kbd>
+      </div>
+      <div class="command-results" id="commandResults"></div>
+    </div>
+  </div>
+
+  <!-- Floating dock -->
+  <nav class="dock glass glass-strong glass-chrome" aria-label="Hızlı erişim">
+    <button type="button" class="dock-btn" id="scrollTopBtn" aria-label="Yukarı"><i class="fas fa-arrow-up"></i></button>
+    <span class="dock-sep" aria-hidden="true"></span>
+    <button type="button" class="dock-btn" id="cmdHint" aria-label="Hızlı arama (Ctrl+K)" title="Ctrl+K">
+      <i class="fas fa-command"></i>
+    </button>
+  </nav>
+
+  <div id="toast" class="toast glass glass-strong" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+:root {
+  /* macOS Liquid Glass palette */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.28);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-border-soft: rgba(255, 255, 255, 0.35);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-shadow: rgba(15, 23, 42, 0.12);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+  --blur-sm: 16px;
+  --blur-md: 28px;
+  --blur-lg: 48px;
+  --blur-xl: 64px;
+
+  --bg-base: #e8edf5;
+  --bg-mesh-1: #c7d2fe;
+  --bg-mesh-2: #fbcfe8;
+  --bg-mesh-3: #a5f3fc;
+  --bg-mesh-4: #ddd6fe;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-inverse: #f8fafc;
+
+  --accent: #007aff;
+  --accent-hover: #0062cc;
+  --accent-soft: rgba(0, 122, 255, 0.14);
+  --accent-glow: rgba(0, 122, 255, 0.35);
+
+  --pink: #ff2d55;
+  --purple: #af52de;
+  --green: #34c759;
+  --orange: #ff9500;
+  --teal: #5ac8fa;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  --space-xs: 0.35rem;
+  --space-sm: 0.65rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-mono: "SF Mono", ui-monospace, "Cascadia Code", monospace;
+
+  --reading-size: 1.05rem;
+  --line-height: 1.75;
+  --header-height: 72px;
+  --dock-height: 64px;
+  --sidebar-width: 320px;
+  --content-max: 760px;
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.15, 1);
+
+  --ring: 0 0 0 4px var(--accent-soft);
+  --shadow-glass: 0 18px 50px var(--glass-shadow), var(--glass-inner);
+  --shadow-float: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(28, 28, 30, 0.62);
+  --glass-bg-strong: rgba(44, 44, 46, 0.78);
+  --glass-bg-subtle: rgba(28, 28, 30, 0.38);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-soft: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --glass-shadow: rgba(0, 0, 0, 0.45);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  --bg-base: #0a0a0f;
+  --bg-mesh-1: #1e1b4b;
+  --bg-mesh-2: #4c0519;
+  --bg-mesh-3: #0c4a6e;
+  --bg-mesh-4: #312e81;
+
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --accent-soft: rgba(10, 132, 255, 0.22);
+  --accent-glow: rgba(10, 132, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --glass-bg: rgba(28, 28, 30, 0.62);
+    --glass-bg-strong: rgba(44, 44, 46, 0.78);
+    --glass-bg-subtle: rgba(28, 28, 30, 0.38);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-border-soft: rgba(255, 255, 255, 0.08);
+    --glass-highlight: rgba(255, 255, 255, 0.12);
+    --glass-shadow: rgba(0, 0, 0, 0.45);
+    --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --bg-base: #0a0a0f;
+    --bg-mesh-1: #1e1b4b;
+    --bg-mesh-2: #4c0519;
+    --bg-mesh-3: #0c4a6e;
+    --bg-mesh-4: #312e81;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #71717a;
+    --accent: #0a84ff;
+    --accent-hover: #409cff;
+    --accent-soft: rgba(10, 132, 255, 0.22);
+    --accent-glow: rgba(10, 132, 255, 0.4);
+  }
+}

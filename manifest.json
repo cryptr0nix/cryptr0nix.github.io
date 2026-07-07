@@ -1,0 +1,11 @@
+{
+  "name": "Hindiba — Eşref Akbaş",
+  "short_name": "Hindiba",
+  "description": "Edebiyat, şiir ve günlük yazıları",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8edf5",
+  "theme_color": "#007aff",
+  "lang": "tr",
+  "orientation": "portrait-primary"
+}
